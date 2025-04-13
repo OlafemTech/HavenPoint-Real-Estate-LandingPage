@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HavenPoint Realty - Your Trusted Real Estate Partner</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563eb", secondary: "#4f46e5" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+      .hero-section {
+          position: relative;
+          background-size: cover;
+          background-position: center;
+      }
+      .hero-overlay {
+          background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+      }
+      .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 50;
+          min-width: 220px;
+      }
+      .dropdown:hover .dropdown-menu {
+          display: block;
+      }
+      .sub-dropdown-menu {
+          display: none;
+          position: absolute;
+          left: 100%;
+          top: 0;
+          min-width: 220px;
+      }
+      .sub-dropdown:hover .sub-dropdown-menu {
+          display: block;
+      }
+      .property-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          background: #2563eb;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      .custom-checkbox {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+      }
+      .custom-checkbox input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          background-color: #fff;
+          border: 2px solid #d1d5db;
+          border-radius: 4px;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+          background-color: #2563eb;
+          border-color: #2563eb;
+      }
+      .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+          display: block;
+      }
+      .custom-checkbox .checkmark:after {
+          left: 6px;
+          top: 2px;
+          width: 5px;
+          height: 10px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+      }
+      .custom-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .switch-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #e5e7eb;
+          transition: .4s;
+          border-radius: 34px;
+      }
+      .switch-slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      .custom-switch input:checked + .switch-slider {
+          background-color: #2563eb;
+      }
+      .custom-switch input:checked + .switch-slider:before {
+          transform: translateX(26px);
+      }
+      .custom-radio {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+      }
+      .custom-radio input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .radio-mark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 20px;
+          width: 20px;
+          background-color: #fff;
+          border: 2px solid #d1d5db;
+          border-radius: 50%;
+      }
+      .custom-radio input:checked ~ .radio-mark {
+          border-color: #2563eb;
+      }
+      .radio-mark:after {
+          content: "";
+          position: absolute;
+          display: none;
+          top: 4px;
+          left: 4px;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #2563eb;
+      }
+      .custom-radio input:checked ~ .radio-mark:after {
+          display: block;
+      }
+      .mobile-menu {
+          display: none;
+      }
+      @media (max-width: 1024px) {
+          .desktop-menu {
+              display: none;
+          }
+          .mobile-menu {
+              display: block;
+          }
+          .mobile-dropdown-content {
+              display: none;
+          }
+          .mobile-dropdown-content.active {
+              display: block;
+          }
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header with Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+      <div
+        class="container mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary"
+          >HavenPoint</a
+        >
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-menu">
+          <ul class="flex space-x-6">
+            <li class="dropdown relative">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-primary font-medium"
+              >
+                Properties
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-down-s-line"></i>
+                </span>
+              </a>
+              <div class="dropdown-menu bg-white shadow-lg rounded py-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >For Sale</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >For Rent</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >New Developments</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Recently Sold</a
+                >
+              </div>
+            </li>
+            <li class="dropdown relative">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-primary font-medium"
+              >
+                Services
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-down-s-line"></i>
+                </span>
+              </a>
+              <div class="dropdown-menu bg-white shadow-lg rounded py-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Property Sales</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Property Management</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Investment Advisory</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Market Analysis</a
+                >
+              </div>
+            </li>
+            <li class="dropdown relative">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-primary font-medium"
+              >
+                Areas
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-down-s-line"></i>
+                </span>
+              </a>
+              <div class="dropdown-menu bg-white shadow-lg rounded py-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Featured Neighborhoods</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >City Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >School Districts</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Market Trends</a
+                >
+              </div>
+            </li>
+            <li class="dropdown relative">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-primary font-medium"
+              >
+                Resources
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-down-s-line"></i>
+                </span>
+              </a>
+              <div class="dropdown-menu bg-white shadow-lg rounded py-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Buying Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Selling Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Property News</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >FAQs</a
+                >
+              </div>
+            </li>
+            <li class="dropdown relative">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-primary font-medium"
+              >
+                About Us
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-down-s-line"></i>
+                </span>
+              </a>
+              <div class="dropdown-menu bg-white shadow-lg rounded py-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Our Story</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Meet The Team</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Careers</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary"
+                  >Awards</a
+                >
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="flex items-center space-x-4">
+          <button
+            class="bg-primary text-white px-5 py-2 !rounded-button font-medium hover:bg-blue-700 transition whitespace-nowrap"
+          >
+            Contact Us
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            class="mobile-menu-button w-10 h-10 flex items-center justify-center text-gray-700"
+          >
+            <i class="ri-menu-line text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="mobile-menu hidden bg-white shadow-lg">
+        <div class="container mx-auto px-4 py-2">
+          <div class="mobile-dropdown">
+            <button
+              class="w-full flex justify-between items-center py-3 border-b border-gray-100"
+            >
+              <span class="font-medium">Properties</span>
+              <span class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </span>
+            </button>
+            <div class="mobile-dropdown-content pl-4">
+              <a href="#" class="block py-2 text-gray-700">For Sale</a>
+              <a href="#" class="block py-2 text-gray-700">For Rent</a>
+              <a href="#" class="block py-2 text-gray-700">New Developments</a>
+              <a href="#" class="block py-2 text-gray-700">Recently Sold</a>
+            </div>
+          </div>
+
+          <div class="mobile-dropdown">
+            <button
+              class="w-full flex justify-between items-center py-3 border-b border-gray-100"
+            >
+              <span class="font-medium">Services</span>
+              <span class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </span>
+            </button>
+            <div class="mobile-dropdown-content pl-4">
+              <a href="#" class="block py-2 text-gray-700">Property Sales</a>
+              <a href="#" class="block py-2 text-gray-700"
+                >Property Management</a
+              >
+              <a href="#" class="block py-2 text-gray-700"
+                >Investment Advisory</a
+              >
+              <a href="#" class="block py-2 text-gray-700">Market Analysis</a>
+            </div>
+          </div>
+
+          <div class="mobile-dropdown">
+            <button
+              class="w-full flex justify-between items-center py-3 border-b border-gray-100"
+            >
+              <span class="font-medium">Areas</span>
+              <span class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </span>
+            </button>
+            <div class="mobile-dropdown-content pl-4">
+              <a href="#" class="block py-2 text-gray-700"
+                >Featured Neighborhoods</a
+              >
+              <a href="#" class="block py-2 text-gray-700">City Guide</a>
+              <a href="#" class="block py-2 text-gray-700">School Districts</a>
+              <a href="#" class="block py-2 text-gray-700">Market Trends</a>
+            </div>
+          </div>
+
+          <div class="mobile-dropdown">
+            <button
+              class="w-full flex justify-between items-center py-3 border-b border-gray-100"
+            >
+              <span class="font-medium">Resources</span>
+              <span class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </span>
+            </button>
+            <div class="mobile-dropdown-content pl-4">
+              <a href="#" class="block py-2 text-gray-700">Buying Guide</a>
+              <a href="#" class="block py-2 text-gray-700">Selling Guide</a>
+              <a href="#" class="block py-2 text-gray-700">Property News</a>
+              <a href="#" class="block py-2 text-gray-700">FAQs</a>
+            </div>
+          </div>
+
+          <div class="mobile-dropdown">
+            <button
+              class="w-full flex justify-between items-center py-3 border-b border-gray-100"
+            >
+              <span class="font-medium">About Us</span>
+              <span class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </span>
+            </button>
+            <div class="mobile-dropdown-content pl-4">
+              <a href="#" class="block py-2 text-gray-700">Our Story</a>
+              <a href="#" class="block py-2 text-gray-700">Meet The Team</a>
+              <a href="#" class="block py-2 text-gray-700">Careers</a>
+              <a href="#" class="block py-2 text-gray-700">Awards</a>
+            </div>
+          </div>
+
+          <div class="py-3">
+            <button
+              class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-blue-700 transition whitespace-nowrap"
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="hero-section w-full"
+      style="background-image: url('https://public.readdy.ai/ai/img_res/95cb710e272dce13099d532024519473.jpg');"
+    >
+      <div class="hero-overlay w-full">
+        <div class="container mx-auto px-4 py-20 md:py-28 lg:py-36">
+          <div class="w-full max-w-2xl">
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4"
+            >
+              Find Your Dream Home
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-8">
+              Discover exceptional properties in prime locations with HavenPoint
+              Realty, your trusted partner in real estate since 2005.
+            </p>
+
+            <!-- Search Form -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1"
+                    >Property Type</label
+                  >
+                  <div class="relative">
+                    <select
+                      class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    >
+                      <option>Any Type</option>
+                      <option>House</option>
+                      <option>Apartment</option>
+                      <option>Townhouse</option>
+                      <option>Land</option>
+                      <option>Commercial</option>
+                    </select>
+                    <div
+                      class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    >
+                      <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1"
+                    >Location</label
+                  >
+                  <div class="relative">
+                    <input
+                      type="text"
+                      placeholder="City, neighborhood, or ZIP"
+                      class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400"
+                    >
+                      <i class="ri-map-pin-line"></i>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1"
+                    >Price Range</label
+                  >
+                  <div class="relative">
+                    <select
+                      class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    >
+                      <option>Any Price</option>
+                      <option>Under $200,000</option>
+                      <option>$200,000 - $500,000</option>
+                      <option>$500,000 - $1,000,000</option>
+                      <option>Over $1,000,000</option>
+                    </select>
+                    <div
+                      class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    >
+                      <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3"
+              >
+                <button
+                  class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-700 transition flex-1 whitespace-nowrap"
+                >
+                  <i class="ri-search-line mr-2"></i> Search Properties
+                </button>
+                <button
+                  class="bg-white text-primary border border-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap"
+                >
+                  Advanced Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Featured Properties
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Explore our handpicked selection of premium properties that
+            represent the best in comfort, luxury, and investment potential.
+          </p>
+        </div>
+
+        <!-- Property Filters -->
+        <div class="mb-10 bg-white p-6 rounded-lg shadow-sm">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="relative">
+              <button
+                class="w-full flex justify-between items-center bg-gray-50 border border-gray-300 rounded px-4 py-2 text-gray-700 hover:border-gray-400 focus:outline-none whitespace-nowrap"
+              >
+                <span>Property Type</span>
+                <i class="ri-arrow-down-s-line ml-2"></i>
+              </button>
+              <div
+                class="hidden absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 py-2"
+              >
+                <div class="px-4 py-2">
+                  <label class="flex items-center mb-2">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                    </span>
+                    <span>Single Family Homes</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                    </span>
+                    <span>Condos/Apartments</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                    </span>
+                    <span>Townhouses</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                    </span>
+                    <span>Luxury Homes</span>
+                  </label>
+                  <label class="flex items-center">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" />
+                      <span class="checkmark"></span>
+                    </span>
+                    <span>Commercial</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <button
+                class="w-full flex justify-between items-center bg-gray-50 border border-gray-300 rounded px-4 py-2 text-gray-700 hover:border-gray-400 focus:outline-none whitespace-nowrap"
+              >
+                <span>Price Range</span>
+                <i class="ri-arrow-down-s-line ml-2"></i>
+              </button>
+              <div
+                class="hidden absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 py-2"
+              >
+                <div class="px-4 py-2">
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="price-range" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>Under $200k</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="price-range" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>$200k - $500k</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="price-range" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>$500k - $1M</span>
+                  </label>
+                  <label class="flex items-center">
+                    <span class="custom-radio">
+                      <input type="radio" name="price-range" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>Over $1M</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <button
+                class="w-full flex justify-between items-center bg-gray-50 border border-gray-300 rounded px-4 py-2 text-gray-700 hover:border-gray-400 focus:outline-none whitespace-nowrap"
+              >
+                <span>Bedrooms</span>
+                <i class="ri-arrow-down-s-line ml-2"></i>
+              </button>
+              <div
+                class="hidden absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 py-2"
+              >
+                <div class="px-4 py-2">
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="bedrooms" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>Studio</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="bedrooms" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>1+ Beds</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="bedrooms" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>2+ Beds</span>
+                  </label>
+                  <label class="flex items-center mb-2">
+                    <span class="custom-radio">
+                      <input type="radio" name="bedrooms" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>3+ Beds</span>
+                  </label>
+                  <label class="flex items-center">
+                    <span class="custom-radio">
+                      <input type="radio" name="bedrooms" />
+                      <span class="radio-mark"></span>
+                    </span>
+                    <span>4+ Beds</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative">
+              <button
+                class="w-full flex justify-between items-center bg-gray-50 border border-gray-300 rounded px-4 py-2 text-gray-700 hover:border-gray-400 focus:outline-none whitespace-nowrap"
+              >
+                <span>More Filters</span>
+                <i class="ri-arrow-down-s-line ml-2"></i>
+              </button>
+              <div
+                class="hidden absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 py-2"
+              >
+                <div class="px-4 py-2">
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Bathrooms</label
+                    >
+                    <div class="flex items-center space-x-2">
+                      <span class="text-sm text-gray-600">1+</span>
+                      <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        value="1"
+                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <span class="text-sm text-gray-600">5+</span>
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Square Footage</label
+                    >
+                    <div class="grid grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        placeholder="Min"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-1 px-2 rounded text-sm"
+                      />
+                      <input
+                        type="text"
+                        placeholder="Max"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-1 px-2 rounded text-sm"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Year Built</label
+                    >
+                    <div class="grid grid-cols-2 gap-2">
+                      <input
+                        type="text"
+                        placeholder="From"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-1 px-2 rounded text-sm"
+                      />
+                      <input
+                        type="text"
+                        placeholder="To"
+                        class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-1 px-2 rounded text-sm"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Amenities</label
+                    >
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+                      <label class="flex items-center">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" />
+                          <span class="checkmark"></span>
+                        </span>
+                        <span class="text-sm">Pool</span>
+                      </label>
+                      <label class="flex items-center">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" />
+                          <span class="checkmark"></span>
+                        </span>
+                        <span class="text-sm">Garage</span>
+                      </label>
+                      <label class="flex items-center">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" />
+                          <span class="checkmark"></span>
+                        </span>
+                        <span class="text-sm">Fireplace</span>
+                      </label>
+                      <label class="flex items-center">
+                        <span class="custom-checkbox">
+                          <input type="checkbox" />
+                          <span class="checkmark"></span>
+                        </span>
+                        <span class="text-sm">Air Conditioning</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Property Card 1 -->
+          <div
+            class="property-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/18a499dad33b4d19bb5a49519ea5e120.jpg"
+                alt="Luxury Villa"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >Featured</span
+                >
+              </div>
+              <div class="absolute top-4 right-4">
+                <button
+                  class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md text-gray-700 hover:text-primary"
+                >
+                  <i class="ri-heart-line"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-900">
+                  Lakeside Luxury Villa
+                </h3>
+                <p class="text-xl font-bold text-primary">$1,250,000</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                123 Lakeview Drive, Beverly Hills, CA 90210
+              </p>
+              <div class="flex items-center text-gray-700 mb-6">
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-hotel-bed-line"></i>
+                  </span>
+                  <span>4 Beds</span>
+                </div>
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-shower-line"></i>
+                  </span>
+                  <span>3.5 Baths</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-ruler-line"></i>
+                  </span>
+                  <span>3,500 sq ft</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/2cfd773708d7c0cfe3ae5fa0a4f08a74.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-sm text-gray-600">Jennifer Lawrence</span>
+                </div>
+                <button
+                  class="bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-blue-700 transition whitespace-nowrap"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 2 -->
+          <div
+            class="property-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/0017709230c5f145b70e851717107d28.jpg"
+                alt="Downtown Apartment"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >For Rent</span
+                >
+              </div>
+              <div class="absolute top-4 right-4">
+                <button
+                  class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md text-gray-700 hover:text-primary"
+                >
+                  <i class="ri-heart-line"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-900">
+                  Downtown Skyline Apartment
+                </h3>
+                <p class="text-xl font-bold text-primary">$3,800/mo</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                456 Central Avenue, New York, NY 10001
+              </p>
+              <div class="flex items-center text-gray-700 mb-6">
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-hotel-bed-line"></i>
+                  </span>
+                  <span>2 Beds</span>
+                </div>
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-shower-line"></i>
+                  </span>
+                  <span>2 Baths</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-ruler-line"></i>
+                  </span>
+                  <span>1,200 sq ft</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/52a9e38181dd2d3f1b69f999209d4ff1.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-sm text-gray-600">Michael Johnson</span>
+                </div>
+                <button
+                  class="bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-blue-700 transition whitespace-nowrap"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 3 -->
+          <div
+            class="property-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/57cd88404c6041c31cd4ad6536f067bf.jpg"
+                alt="Family Home"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium"
+                  >New Listing</span
+                >
+              </div>
+              <div class="absolute top-4 right-4">
+                <button
+                  class="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-md text-gray-700 hover:text-primary"
+                >
+                  <i class="ri-heart-line"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-bold text-gray-900">
+                  Suburban Family Home
+                </h3>
+                <p class="text-xl font-bold text-primary">$685,000</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                789 Maple Street, Arlington, VA 22207
+              </p>
+              <div class="flex items-center text-gray-700 mb-6">
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-hotel-bed-line"></i>
+                  </span>
+                  <span>4 Beds</span>
+                </div>
+                <div class="flex items-center mr-4">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-shower-line"></i>
+                  </span>
+                  <span>2.5 Baths</span>
+                </div>
+                <div class="flex items-center">
+                  <span class="w-5 h-5 flex items-center justify-center mr-1">
+                    <i class="ri-ruler-line"></i>
+                  </span>
+                  <span>2,800 sq ft</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/95a44c84e96978fee896e2125fdc9613.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-sm text-gray-600">Sarah Williams</span>
+                </div>
+                <button
+                  class="bg-primary text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-blue-700 transition whitespace-nowrap"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-white text-primary border border-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap"
+          >
+            View All Properties
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Comprehensive real estate solutions tailored to your needs, whether
+            you're buying, selling, renting, or investing.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-6 mx-auto"
+            >
+              <i class="ri-home-4-line text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">
+              Property Sales
+            </h3>
+            <p class="text-gray-600 text-center">
+              Expert guidance throughout the entire home selling process, from
+              pricing strategy to closing the deal.
+            </p>
+            <div class="mt-6 text-center">
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline inline-flex items-center"
+              >
+                Learn More
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-6 mx-auto"
+            >
+              <i class="ri-key-line text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">
+              Property Management
+            </h3>
+            <p class="text-gray-600 text-center">
+              Comprehensive management services for property owners, including
+              tenant screening, maintenance, and rent collection.
+            </p>
+            <div class="mt-6 text-center">
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline inline-flex items-center"
+              >
+                Learn More
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-6 mx-auto"
+            >
+              <i class="ri-funds-line text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">
+              Investment Advisory
+            </h3>
+            <p class="text-gray-600 text-center">
+              Strategic investment guidance to help you build a profitable real
+              estate portfolio with long-term growth potential.
+            </p>
+            <div class="mt-6 text-center">
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline inline-flex items-center"
+              >
+                Learn More
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-blue-100 text-primary rounded-full mb-6 mx-auto"
+            >
+              <i class="ri-line-chart-line text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">
+              Market Analysis
+            </h3>
+            <p class="text-gray-600 text-center">
+              In-depth market research and valuation services to help you make
+              informed real estate decisions.
+            </p>
+            <div class="mt-6 text-center">
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline inline-flex items-center"
+              >
+                Learn More
+                <span class="w-5 h-5 flex items-center justify-center ml-1">
+                  <i class="ri-arrow-right-line"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas We Serve Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Areas We Serve</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Discover properties in these popular neighborhoods and communities
+            where we have extensive local expertise.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Area 1 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/a85d862d6e649f1a7b28beae6130ac25.jpg"
+              alt="Downtown"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Downtown</h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">48 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/cd14e64aa7c465c83201e4eb26b85880.jpg"
+              alt="Westside"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Westside</h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">36 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area 3 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/2773fc74970a050fb64efc8644e6984e.jpg"
+              alt="Beachfront"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Beachfront</h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">24 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area 4 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/92b841310eeb127d35f2e2de986fca05.jpg"
+              alt="Historic District"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">
+                Historic District
+              </h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">19 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area 5 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/c0de9cf84a9b61fe9bc36149fbca9986.jpg"
+              alt="Tech District"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Tech District</h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">31 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area 6 -->
+          <div class="relative rounded-lg overflow-hidden group">
+            <img
+              src="https://public.readdy.ai/ai/img_res/0ddcf18cd7c867cd4caeeb1a8d0cbcf7.jpg"
+              alt="University Area"
+              class="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
+            ></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white mb-2">University Area</h3>
+              <div class="flex justify-between items-center">
+                <p class="text-white text-sm">27 Properties</p>
+                <a
+                  href="#"
+                  class="text-white hover:text-primary font-medium text-sm flex items-center"
+                >
+                  View Properties
+                  <span class="w-5 h-5 flex items-center justify-center ml-1">
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            Find Properties on the Map
+          </h3>
+          <div
+            class="w-full h-96 rounded-lg overflow-hidden"
+            style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            What Our Clients Say
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Hear from our satisfied clients about their experience working with
+            HavenPoint Realty.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Working with HavenPoint Realty was the best decision we made.
+              Their team guided us through every step of buying our first home.
+              Jennifer was patient, knowledgeable, and found us the perfect
+              property within our budget."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/4ec24a4b7f7458e546fee77ad5b0a432.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-medium text-gray-900">
+                  Robert & Emma Thompson
+                </h4>
+                <p class="text-sm text-gray-600">First-time Homebuyers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "As an investor, I needed a real estate partner who understood the
+              market dynamics. Michael from HavenPoint provided invaluable
+              insights that helped me acquire properties with excellent ROI
+              potential. Their market analysis is top-notch."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/af6256078eed305e65fa30139ea17d4e.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-medium text-gray-900">David Chen</h4>
+                <p class="text-sm text-gray-600">Property Investor</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-gray-50 rounded-lg p-6 shadow-sm">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Selling our family home of 25 years was emotional, but Sarah from
+              HavenPoint made the process smooth and respectful. Her marketing
+              strategy attracted multiple offers, and we sold above asking price
+              within just two weeks!"
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/4167ee03ed90714c93d92fb03c25d1b0.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-medium text-gray-900">Patricia Rodriguez</h4>
+                <p class="text-sm text-gray-600">Home Seller</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Our Team Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Meet Our Expert Team
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Our experienced real estate professionals are dedicated to providing
+            exceptional service and results.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Team Member 1 -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <img
+              src="https://public.readdy.ai/ai/img_res/18b6e283bcfe35fbf74203b71879fc89.jpg"
+              alt="Team Member"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">
+                Jennifer Lawrence
+              </h3>
+              <p class="text-primary font-medium mb-3">
+                Senior Real Estate Agent
+              </p>
+              <p class="text-gray-600 text-sm mb-4">
+                Specializing in luxury properties with over 12 years of
+                experience in high-end real estate markets.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-mail-line"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-phone-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <img
+              src="https://public.readdy.ai/ai/img_res/d3eafbaa533fc1206e639b88268afb6b.jpg"
+              alt="Team Member"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">
+                Michael Johnson
+              </h3>
+              <p class="text-primary font-medium mb-3">Investment Specialist</p>
+              <p class="text-gray-600 text-sm mb-4">
+                Expert in commercial properties and investment opportunities
+                with a background in financial analysis.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-mail-line"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-phone-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <img
+              src="https://public.readdy.ai/ai/img_res/f51c31116d45dee83dd10fd5e6418992.jpg"
+              alt="Team Member"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">
+                Sarah Williams
+              </h3>
+              <p class="text-primary font-medium mb-3">
+                Residential Property Expert
+              </p>
+              <p class="text-gray-600 text-sm mb-4">
+                Focused on helping families find their perfect home with
+                expertise in suburban and family-friendly neighborhoods.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-mail-line"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-phone-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <img
+              src="https://public.readdy.ai/ai/img_res/61f411a9043650392b43dc7bee2820db.jpg"
+              alt="Team Member"
+              class="w-full h-64 object-cover object-top"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-1">
+                Daniel Martinez
+              </h3>
+              <p class="text-primary font-medium mb-3">Property Manager</p>
+              <p class="text-gray-600 text-sm mb-4">
+                Specialized in rental property management with expertise in
+                tenant relations and property maintenance.
+              </p>
+              <div class="flex space-x-3">
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-mail-line"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white transition"
+                >
+                  <i class="ri-phone-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <div class="text-center lg:text-left mb-8 lg:mb-0">
+            <h2 class="text-3xl font-bold text-white mb-4">
+              Ready to Find Your Dream Property?
+            </h2>
+            <p class="text-blue-100 max-w-xl">
+              Whether you're looking to buy, sell, or invest, our team of
+              experts is here to guide you every step of the way.
+            </p>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <button
+              class="bg-white text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-100 transition whitespace-nowrap"
+            >
+              <i class="ri-calendar-line mr-2"></i> Schedule a Viewing
+            </button>
+            <button
+              class="bg-blue-700 text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-800 transition whitespace-nowrap"
+            >
+              <i class="ri-home-4-line mr-2"></i> List Your Property
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Contact Us</h2>
+            <p class="text-gray-600 mb-8">
+              Have questions or need assistance? Our team is here to help. Fill
+              out the form and we'll get back to you as soon as possible.
+            </p>
+
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >I'm interested in</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full border border-gray-300 rounded px-4 py-3 pr-8 appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  >
+                    <option>Buying a property</option>
+                    <option>Selling a property</option>
+                    <option>Renting a property</option>
+                    <option>Property management</option>
+                    <option>Investment opportunities</option>
+                    <option>Other services</option>
+                  </select>
+                  <div
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  >
+                    <i class="ri-arrow-down-s-line"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Message</label
+                >
+                <textarea
+                  rows="4"
+                  class="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                ></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="flex items-center">
+                  <span class="custom-checkbox">
+                    <input type="checkbox" />
+                    <span class="checkmark"></span>
+                  </span>
+                  <span class="text-gray-700 text-sm"
+                    >I agree to receive emails about property listings and
+                    services</span
+                  >
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-700 transition whitespace-nowrap"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div>
+            <div class="bg-gray-50 rounded-lg p-8 mb-8">
+              <h3 class="text-xl font-bold text-gray-900 mb-6">
+                Office Locations
+              </h3>
+
+              <div class="space-y-6">
+                <div class="flex">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4 flex-shrink-0"
+                  >
+                    <i class="ri-map-pin-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-1">Main Office</h4>
+                    <p class="text-gray-600">
+                      Gwarimpa, Abuja<br />FCT, Nigeria
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4 flex-shrink-0"
+                  >
+                    <i class="ri-map-pin-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-1">
+                      West Coast Office
+                    </h4>
+                    <p class="text-gray-600">
+                      Aid Foundation Building<br />Barnawa, Kaduna Nigeria
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4 flex-shrink-0"
+                  >
+                    <i class="ri-phone-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-1">Phone</h4>
+                    <p class="text-gray-600">+234(0)813-101-7099</p>
+                  </div>
+                </div>
+
+                <div class="flex">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4 flex-shrink-0"
+                  >
+                    <i class="ri-mail-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-1">Email</h4>
+                    <p class="text-gray-600">Digitalcivitas855@gmail.com</p>
+                  </div>
+                </div>
+
+                <div class="flex">
+                  <div
+                    class="w-10 h-10 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4 flex-shrink-0"
+                  >
+                    <i class="ri-time-line"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 mb-1">
+                      Business Hours
+                    </h4>
+                    <p class="text-gray-600">
+                      Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM
+                      - 4:00 PM<br />Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="w-full h-64 rounded-lg overflow-hidden"
+              style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-white mb-6 inline-block"
+              >HavenPoint</a
+            >
+            <p class="text-gray-400 mb-6">
+              Your trusted partner in real estate since 2005. We help you find
+              the perfect property that matches your lifestyle and investment
+              goals.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-twitter-x-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-linkedin-fill"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Properties</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Featured Listings</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >New Listings</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Open Houses</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Price Reductions</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Properties for Sale</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Properties for Rent</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Resources</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Mortgage Calculator</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Property Guides</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Market Reports</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Newsletter Archive</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Buying Guide</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Selling Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Company</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Press Room</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8">
+          <marquee behavior="scroll" direction="left" class="text-gray-400">Designed and developed by DigiTech Solutions | +234(0)8131017099 | Digitalcivitas855@gmail.com</marquee>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-gray-400">
+                &copy; 2025 HavenPoint Realty. All rights reserved.
+              </p>
+            </div>
+            <div class="md:text-right">
+              <ul class="flex flex-wrap space-x-4 md:justify-end">
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Disclaimer</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Accessibility</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Mobile Dropdown Toggle
+      const mobileDropdowns = document.querySelectorAll(".mobile-dropdown button");
+
+      mobileDropdowns.forEach((dropdown) => {
+        dropdown.addEventListener("click", () => {
+          const content = dropdown.nextElementSibling;
+          content.classList.toggle("active");
+
+          // Update the icon
+          const icon = dropdown.querySelector("i");
+          if (content.classList.contains("active")) {
+            icon.classList.remove("ri-arrow-down-s-line");
+            icon.classList.add("ri-arrow-up-s-line");
+          } else {
+            icon.classList.remove("ri-arrow-up-s-line");
+            icon.classList.add("ri-arrow-down-s-line");
+          }
+        });
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HavenPoint Realty - Your Trusted Real Estate Partner</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#2563eb", secondary: "#0f766e" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Poppins', sans-serif;
+      }
+      .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 50;
+          min-width: 220px;
+      }
+      .dropdown:hover .dropdown-menu {
+          display: block;
+      }
+      .sub-dropdown-menu {
+          display: none;
+          position: absolute;
+          left: 100%;
+          top: 0;
+          z-index: 50;
+          min-width: 220px;
+      }
+      .sub-dropdown:hover .sub-dropdown-menu {
+          display: block;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 20px;
+          height: 20px;
+          background: #2563eb;
+          border-radius: 50%;
+          cursor: pointer;
+      }
+      input[type="range"] {
+          -webkit-appearance: none;
+          appearance: none;
+          height: 6px;
+          background: #e5e7eb;
+          border-radius: 5px;
+          outline: none;
+      }
+      .custom-checkbox {
+          display: none;
+      }
+      .custom-checkbox + label {
+          position: relative;
+          padding-left: 30px;
+          cursor: pointer;
+          display: inline-block;
+      }
+      .custom-checkbox + label:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          border: 2px solid #d1d5db;
+          background: #fff;
+          border-radius: 4px;
+      }
+      .custom-checkbox:checked + label:before {
+          background: #2563eb;
+          border-color: #2563eb;
+      }
+      .custom-checkbox:checked + label:after {
+          content: '';
+          position: absolute;
+          left: 7px;
+          top: 3px;
+          width: 6px;
+          height: 12px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+      }
+      .custom-switch {
+          position: relative;
+          display: inline-block;
+          width: 50px;
+          height: 24px;
+      }
+      .custom-switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
+      .switch-slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #e5e7eb;
+          transition: .4s;
+          border-radius: 24px;
+      }
+      .switch-slider:before {
+          position: absolute;
+          content: "";
+          height: 18px;
+          width: 18px;
+          left: 3px;
+          bottom: 3px;
+          background-color: white;
+          transition: .4s;
+          border-radius: 50%;
+      }
+      input:checked + .switch-slider {
+          background-color: #2563eb;
+      }
+      input:checked + .switch-slider:before {
+          transform: translateX(26px);
+      }
+      .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          z-index: 100;
+          overflow-y: auto;
+      }
+      .mobile-menu-active {
+          display: block;
+      }
+      .mobile-dropdown-content {
+          display: none;
+          padding-left: 20px;
+      }
+      .mobile-dropdown-active .mobile-dropdown-content {
+          display: block;
+      }
+      .property-card:hover .property-card-overlay {
+          opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary"
+              >HavenPoint</a
+            >
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center space-x-8">
+            <div class="dropdown relative">
+              <button
+                class="flex items-center text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Properties <i class="ri-arrow-down-s-line ml-1"></i>
+              </button>
+              <div class="dropdown-menu bg-white shadow-lg rounded p-2">
+                <a
+                  href="featured-properties-1.html"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >For Sale</a
+                >
+                <a
+                  href="featured-properties-1.html"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >For Rent</a
+                >
+                <a
+                  href="featured-properties-1.html"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >New Developments</a
+                >
+                <a
+                  href="featured-properties-1.html"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Recently Sold</a
+                >
+              </div>
+            </div>
+
+            <div class="dropdown relative">
+              <button
+                class="flex items-center text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Services <i class="ri-arrow-down-s-line ml-1"></i>
+              </button>
+              <div class="dropdown-menu bg-white shadow-lg rounded p-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Property Sales</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Property Management</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Investment Advisory</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Market Analysis</a
+                >
+              </div>
+            </div>
+
+            <div class="dropdown relative">
+              <button
+                class="flex items-center text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Areas <i class="ri-arrow-down-s-line ml-1"></i>
+              </button>
+              <div class="dropdown-menu bg-white shadow-lg rounded p-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Featured Neighborhoods</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >City Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >School Districts</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Market Trends</a
+                >
+              </div>
+            </div>
+
+            <div class="dropdown relative">
+              <button
+                class="flex items-center text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+              >
+                Resources <i class="ri-arrow-down-s-line ml-1"></i>
+              </button>
+              <div class="dropdown-menu bg-white shadow-lg rounded p-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Buying Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Selling Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Property News</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >FAQs</a
+                >
+              </div>
+            </div>
+
+            <div class="dropdown relative">
+              <button
+                class="flex items-center text-gray-700 hover:text-primary transition-colors whitespace-nowrap"
+              >
+                About Us <i class="ri-arrow-down-s-line ml-1"></i>
+              </button>
+              <div class="dropdown-menu bg-white shadow-lg rounded p-2">
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Our Story</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Meet The Team</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Careers</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-primary rounded"
+                  >Awards</a
+                >
+              </div>
+            </div>
+          </nav>
+
+          <div class="hidden lg:block">
+            <button
+              class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+            >
+              <a href="https://www.linkedin.com/in/habeeb-oluwafemi-0b1999bb/">Contact Us</a>
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div
+            class="lg:hidden w-10 h-10 flex items-center justify-center"
+            id="mobile-menu-button"
+          >
+            <i class="ri-menu-line ri-2x text-gray-700"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="p-4 flex justify-between items-center border-b">
+        <a href="index-1.html" class="text-2xl font-['Pacifico'] text-primary"
+          >HavenPoint</a
+        >
+        <div
+          class="w-10 h-10 flex items-center justify-center"
+          id="mobile-menu-close"
+        >
+          <i class="ri-close-line ri-2x text-gray-700"></i>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <div class="mobile-dropdown py-3 border-b">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">Properties</span>
+            <div
+              class="w-8 h-8 flex items-center justify-center mobile-dropdown-toggle"
+            >
+              <i class="ri-arrow-down-s-line text-gray-500"></i>
+            </div>
+          </div>
+          <div class="mobile-dropdown-content mt-2">
+            <a href="featured-properties-1.html" class="block py-2 text-gray-600">For Sale</a>
+            <a href="featured-properties-1.html" class="block py-2 text-gray-600">For Rent</a>
+            <a href="featured-properties-1.html" class="block py-2 text-gray-600">New Developments</a>
+            <a href="featured-properties-1.html" class="block py-2 text-gray-600">Recently Sold</a>
+          </div>
+        </div>
+
+        <div class="mobile-dropdown py-3 border-b">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">Services</span>
+            <div
+              class="w-8 h-8 flex items-center justify-center mobile-dropdown-toggle"
+            >
+              <i class="ri-arrow-down-s-line text-gray-500"></i>
+            </div>
+          </div>
+          <div class="mobile-dropdown-content mt-2">
+            <a href="#" class="block py-2 text-gray-600">Property Sales</a>
+            <a href="#" class="block py-2 text-gray-600">Property Management</a>
+            <a href="#" class="block py-2 text-gray-600">Investment Advisory</a>
+            <a href="#" class="block py-2 text-gray-600">Market Analysis</a>
+          </div>
+        </div>
+
+        <div class="mobile-dropdown py-3 border-b">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">Areas</span>
+            <div
+              class="w-8 h-8 flex items-center justify-center mobile-dropdown-toggle"
+            >
+              <i class="ri-arrow-down-s-line text-gray-500"></i>
+            </div>
+          </div>
+          <div class="mobile-dropdown-content mt-2">
+            <a href="#" class="block py-2 text-gray-600"
+              >Featured Neighborhoods</a
+            >
+            <a href="#" class="block py-2 text-gray-600">City Guide</a>
+            <a href="#" class="block py-2 text-gray-600">School Districts</a>
+            <a href="#" class="block py-2 text-gray-600">Market Trends</a>
+          </div>
+        </div>
+
+        <div class="mobile-dropdown py-3 border-b">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">Resources</span>
+            <div
+              class="w-8 h-8 flex items-center justify-center mobile-dropdown-toggle"
+            >
+              <i class="ri-arrow-down-s-line text-gray-500"></i>
+            </div>
+          </div>
+          <div class="mobile-dropdown-content mt-2">
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Buying Guide</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Selling Guide</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Property News</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">FAQs</a>
+          </div>
+        </div>
+
+        <div class="mobile-dropdown py-3 border-b">
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700 font-medium">About Us</span>
+            <div
+              class="w-8 h-8 flex items-center justify-center mobile-dropdown-toggle"
+            >
+              <i class="ri-arrow-down-s-line text-gray-500"></i>
+            </div>
+          </div>
+          <div class="mobile-dropdown-content mt-2">
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Our Story</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Meet The Team</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Careers</a>
+            <a href="about-us-1.html" class="block py-2 text-gray-600">Awards</a>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <button
+            class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+          >
+            <a href="https://www.linkedin.com/in/habeeb-oluwafemi-0b1999bb/">Contact Us</a>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      class="relative pt-20 min-h-[600px] flex items-center"
+      style="background-image: url('https://public.readdy.ai/ai/img_res/9f7dc1ffc468db0013201605aee082ef.jpg'); background-size: cover; background-position: center;"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-transparent"
+      ></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-2xl text-white">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Find Your Dream Home with HavenPoint Realty
+          </h1>
+          <p class="text-xl mb-8">
+            Your trusted partner in real estate, helping you make informed
+            decisions for your property journey.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+            >
+              View Properties
+            </button>
+            <button
+              class="bg-white text-gray-800 px-8 py-3 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+            >
+              Contact an Agent
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Property Search Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div
+          class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md -mt-24 relative z-20"
+        >
+          <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+            Find Your Perfect Property
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Property Type</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option>Any Property Type</option>
+                  <option>Single Family Home</option>
+                  <option>Condo/Apartment</option>
+                  <option>Townhouse</option>
+                  <option>Luxury Home</option>
+                  <option>Commercial</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Location</label
+              >
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="City, Neighborhood, or ZIP"
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+                >
+                  <i class="ri-map-pin-line text-gray-400"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Price Range</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option>Any Price</option>
+                  <option>Under $200,000</option>
+                  <option>$200,000 - $500,000</option>
+                  <option>$500,000 - $1,000,000</option>
+                  <option>Over $1,000,000</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Bedrooms</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option>Any</option>
+                  <option>Studio</option>
+                  <option>1+ Bedrooms</option>
+                  <option>2+ Bedrooms</option>
+                  <option>3+ Bedrooms</option>
+                  <option>4+ Bedrooms</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Bathrooms</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option>Any</option>
+                  <option>1+ Bathrooms</option>
+                  <option>2+ Bathrooms</option>
+                  <option>3+ Bathrooms</option>
+                  <option>4+ Bathrooms</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 text-sm font-medium mb-2"
+                >Property Status</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full bg-gray-50 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                  <option>Any Status</option>
+                  <option>For Sale</option>
+                  <option>For Rent</option>
+                  <option>New Construction</option>
+                  <option>Foreclosure</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <button class="text-primary font-medium flex items-center">
+              <i class="ri-filter-3-line mr-2"></i> Advanced Filters
+            </button>
+            <button
+              class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+            >
+              <i class="ri-search-line mr-2"></i> Search Properties
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Listings Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              Featured Properties
+            </h2>
+            <p class="text-gray-600">
+              Explore our handpicked selection of premium properties
+            </p>
+          </div>
+          <div class="mt-4 lg:mt-0">
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="bg-primary text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap"
+              >
+                All Properties
+              </button>
+              <button
+                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors whitespace-nowrap"
+              >
+                For Sale
+              </button>
+              <button
+                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors whitespace-nowrap"
+              >
+                For Rent
+              </button>
+              <button
+                class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors whitespace-nowrap"
+              >
+                New Development
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Property Card 1 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow property-card"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/598f74039b5c135ca36f05ff74341ea2.jpg"
+                alt="Luxury Villa"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >FEATURED</span
+                >
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white text-primary text-xs font-semibold px-3 py-1 rounded-full"
+                  >FOR SALE</span
+                >
+              </div>
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 transition-opacity flex items-center justify-center property-card-overlay"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap mx-2"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Luxury Waterfront Villa
+                </h3>
+                <p class="text-primary font-bold">$1,250,000</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                <i class="ri-map-pin-line mr-1"></i> 123 Oceanview Drive,
+                Malibu, CA
+              </p>
+              <div class="flex justify-between text-gray-600 text-sm mb-4">
+                <span><i class="ri-home-4-line mr-1"></i> 4,500 sq ft</span>
+                <span><i class="ri-hotel-bed-line mr-1"></i> 5 Beds</span>
+                <span><i class="ri-drop-line mr-1"></i> 4.5 Baths</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/de985b4c1e89fd1ca89ec15407c7fa67.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-gray-700 text-sm">Sarah Johnson</span>
+                </div>
+                <span class="text-gray-500 text-sm">April 5, 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 2 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow property-card"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/3cc1c38b98751563701ca3085b1c849e.jpg"
+                alt="Modern Apartment"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white text-primary text-xs font-semibold px-3 py-1 rounded-full"
+                  >FOR RENT</span
+                >
+              </div>
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 transition-opacity flex items-center justify-center property-card-overlay"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap mx-2"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Modern Downtown Apartment
+                </h3>
+                <p class="text-primary font-bold">$3,800/mo</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                <i class="ri-map-pin-line mr-1"></i> 456 Urban Ave, San
+                Francisco, CA
+              </p>
+              <div class="flex justify-between text-gray-600 text-sm mb-4">
+                <span><i class="ri-home-4-line mr-1"></i> 1,200 sq ft</span>
+                <span><i class="ri-hotel-bed-line mr-1"></i> 2 Beds</span>
+                <span><i class="ri-drop-line mr-1"></i> 2 Baths</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/29b73686e88a6e212c4d87b3ed1d843a.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-gray-700 text-sm">Michael Chen</span>
+                </div>
+                <span class="text-gray-500 text-sm">April 7, 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Card 3 -->
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow property-card"
+          >
+            <div class="relative">
+              <img
+                src="https://public.readdy.ai/ai/img_res/2118bff8c8fa110d0e7403229428c1b8.jpg"
+                alt="New Townhouse"
+                class="w-full h-64 object-cover object-top"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >NEW LISTING</span
+                >
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="bg-white text-primary text-xs font-semibold px-3 py-1 rounded-full"
+                  >FOR SALE</span
+                >
+              </div>
+              <div
+                class="absolute inset-0 bg-black/30 opacity-0 transition-opacity flex items-center justify-center property-card-overlay"
+              >
+                <button
+                  class="bg-white text-primary px-6 py-2 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap mx-2"
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Contemporary Townhouse
+                </h3>
+                <p class="text-primary font-bold">$685,000</p>
+              </div>
+              <p class="text-gray-600 mb-4">
+                <i class="ri-map-pin-line mr-1"></i> 789 Parkside Lane, Austin,
+                TX
+              </p>
+              <div class="flex justify-between text-gray-600 text-sm mb-4">
+                <span><i class="ri-home-4-line mr-1"></i> 2,100 sq ft</span>
+                <span><i class="ri-hotel-bed-line mr-1"></i> 3 Beds</span>
+                <span><i class="ri-drop-line mr-1"></i> 2.5 Baths</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                  <img
+                    src="https://public.readdy.ai/ai/img_res/2b0f697348e9e6b67b477c36156e003c.jpg"
+                    alt="Agent"
+                    class="w-10 h-10 rounded-full object-cover mr-2"
+                  />
+                  <span class="text-gray-700 text-sm">Emily Rodriguez</span>
+                </div>
+                <span class="text-gray-500 text-sm">April 3, 2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <button
+            class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap"
+          >
+            View All Properties <i class="ri-arrow-right-line ml-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Why Choose HavenPoint Realty
+          </h2>
+          <p class="text-gray-600">
+            With over 15 years of experience in the real estate market, we
+            provide exceptional service and expertise to help you achieve your
+            property goals.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-6"
+            >
+              <i class="ri-building-4-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Extensive Property Network
+            </h3>
+            <p class="text-gray-600">
+              Access to exclusive listings and a wide range of properties to
+              match your specific requirements.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-6"
+            >
+              <i class="ri-team-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Expert Agents
+            </h3>
+            <p class="text-gray-600">
+              Our team of experienced professionals provide personalized
+              guidance throughout your property journey.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-6"
+            >
+              <i class="ri-line-chart-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Market Insights
+            </h3>
+            <p class="text-gray-600">
+              Stay informed with up-to-date market analysis and property
+              valuation to make smart decisions.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary/10 text-primary rounded-full mx-auto mb-6"
+            >
+              <i class="ri-customer-service-2-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Dedicated Support
+            </h3>
+            <p class="text-gray-600">
+              Exceptional customer service and support from initial consultation
+              to closing and beyond.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-white p-8 rounded-lg shadow-md">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                Our Impressive Numbers
+              </h3>
+              <p class="text-gray-600 mb-6">
+                We take pride in our achievements and the trust our clients
+                place in us. Our track record speaks for itself.
+              </p>
+
+              <div class="grid grid-cols-2 gap-6">
+                <div>
+                  <p class="text-4xl font-bold text-primary mb-2">1,500+</p>
+                  <p class="text-gray-600">Properties Sold</p>
+                </div>
+                <div>
+                  <p class="text-4xl font-bold text-primary mb-2">98%</p>
+                  <p class="text-gray-600">Client Satisfaction</p>
+                </div>
+                <div>
+                  <p class="text-4xl font-bold text-primary mb-2">$850M+</p>
+                  <p class="text-gray-600">Property Value Sold</p>
+                </div>
+                <div>
+                  <p class="text-4xl font-bold text-primary mb-2">15+</p>
+                  <p class="text-gray-600">Years of Experience</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="h-80" id="sales-chart"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Our Comprehensive Services
+          </h2>
+          <p class="text-gray-600">
+            We offer a wide range of real estate services to meet all your
+            property needs, from buying and selling to investment and property
+            management.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6"
+            >
+              <i class="ri-home-heart-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Residential Sales
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Expert guidance through the entire home buying and selling
+              process, from listing to closing.
+            </p>
+            <ul class="text-gray-600 mb-6 space-y-2">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Professional property valuation</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Strategic marketing campaigns</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Negotiation expertise</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Transaction management</span>
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="text-primary font-medium hover:underline flex items-center"
+            >
+              Learn More <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6"
+            >
+              <i class="ri-building-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Property Management
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Comprehensive property management services to maximize your
+              investment returns and minimize stress.
+            </p>
+            <ul class="text-gray-600 mb-6 space-y-2">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Tenant screening and placement</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Rent collection and accounting</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Property maintenance</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Regular property inspections</span>
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="text-primary font-medium hover:underline flex items-center"
+            >
+              Learn More <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="w-14 h-14 flex items-center justify-center bg-primary/10 text-primary rounded-full mb-6"
+            >
+              <i class="ri-funds-line ri-2x"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Investment Advisory
+            </h3>
+            <p class="text-gray-600 mb-4">
+              Strategic advice and market insights to help you make informed
+              real estate investment decisions.
+            </p>
+            <ul class="text-gray-600 mb-6 space-y-2">
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Market analysis and forecasting</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Investment property identification</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>ROI and cash flow analysis</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ri-check-line text-primary mt-1 mr-2"></i>
+                <span>Portfolio diversification strategies</span>
+              </li>
+            </ul>
+            <a
+              href="#"
+              class="text-primary font-medium hover:underline flex items-center"
+            >
+              Learn More <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-primary rounded-lg overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-8 lg:p-12">
+              <h3 class="text-2xl font-bold text-white mb-4">
+                Need Custom Real Estate Services?
+              </h3>
+              <p class="text-white/90 mb-6">
+                We understand that every client has unique needs. Contact us for
+                a personalized consultation to discuss your specific real estate
+                requirements.
+              </p>
+              <button
+                class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+              >
+                Schedule a Consultation
+              </button>
+            </div>
+            <div
+              class="bg-primary/20"
+              style="background-image: url('https://public.readdy.ai/ai/img_res/2bd2848f4c092990db385c888a56665c.jpg'); background-size: cover; background-position: center;"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            What Our Clients Say
+          </h2>
+          <p class="text-gray-600">
+            Don't just take our word for it. Hear from our satisfied clients
+            about their experience working with HavenPoint Realty.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "Working with HavenPoint Realty was an absolute pleasure. Their
+              team went above and beyond to help us find our dream home. The
+              entire process was smooth and stress-free thanks to their
+              expertise and dedication."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/c13370ead11c0cf0e7ce915140a4c549.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">
+                  Robert & Jennifer Anderson
+                </h4>
+                <p class="text-gray-500 text-sm">First-time Homebuyers</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "As an investor, I've worked with many real estate firms, but
+              HavenPoint stands out. Their market knowledge and investment
+              advisory services have helped me build a profitable property
+              portfolio. I highly recommend their services."
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/569b42553e1179931e53ccbd0d0d305b.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">David Thompson</h4>
+                <p class="text-gray-500 text-sm">Property Investor</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex text-primary mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "I've been using HavenPoint's property management services for my
+              rental properties for over 3 years. They are responsive,
+              professional, and have significantly reduced my vacancy rates. The
+              best property management team I've worked with!"
+            </p>
+            <div class="flex items-center">
+              <img
+                src="https://public.readdy.ai/ai/img_res/a4960bca7fb4d57739f1b8e14bdcc65c.jpg"
+                alt="Client"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-semibold text-gray-800">Sophia Martinez</h4>
+                <p class="text-gray-500 text-sm">Property Owner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            class="text-primary font-medium hover:underline flex items-center justify-center"
+          >
+            Read More Testimonials <i class="ri-arrow-right-line ml-1"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Areas Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Explore Featured Areas
+          </h2>
+          <p class="text-gray-600">
+            Discover the unique charm and opportunities in these popular
+            neighborhoods where we specialize.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="relative rounded-lg overflow-hidden group h-80">
+            <img
+              src="https://public.readdy.ai/ai/img_res/e3e7d9800946e326665599cb03314022.jpg"
+              alt="Downtown"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6"
+            >
+              <h3 class="text-xl font-bold text-white mb-1">Downtown</h3>
+              <p class="text-white/90 mb-3">Urban living at its finest</p>
+              <div class="flex items-center text-white/90 text-sm">
+                <span class="mr-4"
+                  ><i class="ri-home-4-line mr-1"></i> 45 Properties</span
+                >
+                <span
+                  ><i class="ri-money-dollar-circle-line mr-1"></i> From
+                  $450K</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-lg overflow-hidden group h-80">
+            <img
+              src="https://public.readdy.ai/ai/img_res/e5802ca8bb793e19862d82e2fdef0e2d.jpg"
+              alt="Suburbia"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6"
+            >
+              <h3 class="text-xl font-bold text-white mb-1">
+                Suburbia Heights
+              </h3>
+              <p class="text-white/90 mb-3">Family-friendly communities</p>
+              <div class="flex items-center text-white/90 text-sm">
+                <span class="mr-4"
+                  ><i class="ri-home-4-line mr-1"></i> 78 Properties</span
+                >
+                <span
+                  ><i class="ri-money-dollar-circle-line mr-1"></i> From
+                  $320K</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-lg overflow-hidden group h-80">
+            <img
+              src="https://public.readdy.ai/ai/img_res/addf2a93d4966538af0c8d39e4cf3394.jpg"
+              alt="Coastal"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6"
+            >
+              <h3 class="text-xl font-bold text-white mb-1">Coastal Shores</h3>
+              <p class="text-white/90 mb-3">Breathtaking waterfront living</p>
+              <div class="flex items-center text-white/90 text-sm">
+                <span class="mr-4"
+                  ><i class="ri-home-4-line mr-1"></i> 32 Properties</span
+                >
+                <span
+                  ><i class="ri-money-dollar-circle-line mr-1"></i> From
+                  $750K</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="relative rounded-lg overflow-hidden group h-80">
+            <img
+              src="https://public.readdy.ai/ai/img_res/f7a164dff5888701edb6b2ce21252f76.jpg"
+              alt="Historic"
+              class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6"
+            >
+              <h3 class="text-xl font-bold text-white mb-1">
+                Heritage District
+              </h3>
+              <p class="text-white/90 mb-3">Charming historic properties</p>
+              <div class="flex items-center text-white/90 text-sm">
+                <span class="mr-4"
+                  ><i class="ri-home-4-line mr-1"></i> 24 Properties</span
+                >
+                <span
+                  ><i class="ri-money-dollar-circle-line mr-1"></i> From
+                  $380K</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 bg-white p-8 rounded-lg shadow-md">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                Explore Properties on the Map
+              </h3>
+              <p class="text-gray-600 mb-6">
+                Find properties in your desired location using our interactive
+                map. Filter by property type, price range, and amenities to find
+                your perfect match.
+              </p>
+              <button
+                class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+              >
+                <i class="ri-map-2-line mr-2"></i> Open Interactive Map
+              </button>
+            </div>
+
+            <div
+              class="h-80 rounded-lg overflow-hidden"
+              style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-white mb-4">
+              Ready to Find Your Perfect Property?
+            </h2>
+            <p class="text-white/90 mb-8">
+              Whether you're looking to buy, sell, or invest in real estate, our
+              team of experts is here to help you every step of the way.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button
+                class="bg-white text-primary px-8 py-3 rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+              >
+                <i class="ri-home-heart-line mr-2"></i> Search Properties
+              </button>
+              <button
+                class="bg-transparent text-white border border-white px-8 py-3 rounded-button font-medium hover:bg-white/10 transition-colors whitespace-nowrap"
+              >
+                <i class="ri-user-voice-line mr-2"></i> Contact an Agent
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">
+              Schedule a Viewing
+            </h3>
+            <form>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 text-sm font-medium mb-2"
+                    >Full Name</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 text-sm font-medium mb-2"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your email"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-gray-700 text-sm font-medium mb-2"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Your phone"
+                  />
+                </div>
+                <div>
+                  <label class="block text-gray-700 text-sm font-medium mb-2"
+                    >Preferred Date</label
+                  >
+                  <input
+                    type="date"
+                    class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-medium mb-2"
+                  >Property of Interest</label
+                >
+                <input
+                  type="text"
+                  class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Property address or ID"
+                />
+              </div>
+              <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-medium mb-2"
+                  >Message</label
+                >
+                <textarea
+                  class="w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent h-24"
+                  placeholder="Tell us about your requirements"
+                ></textarea>
+              </div>
+              <div class="flex items-center mb-6">
+                <input type="checkbox" id="consent" class="custom-checkbox" />
+                <label for="consent" class="text-gray-600 text-sm"
+                  >I agree to receive communications from HavenPoint
+                  Realty</label
+                >
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
+              >
+                Schedule Viewing
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between items-center mb-12">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              Real Estate Insights
+            </h2>
+            <p class="text-gray-600">
+              Stay informed with our latest articles, guides, and market updates
+            </p>
+          </div>
+          <div class="mt-4 lg:mt-0">
+            <a
+              href="#"
+              class="text-primary font-medium hover:underline flex items-center"
+            >
+              View All Articles <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/4c7a0ab0f18945807fa3d4786cf80115.jpg"
+              alt="Home Renovation"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-3">
+                <span class="flex items-center mr-4"
+                  ><i class="ri-calendar-line mr-1"></i> April 8, 2025</span
+                >
+                <span class="flex items-center"
+                  ><i class="ri-user-line mr-1"></i> By Jessica Williams</span
+                >
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                10 Home Renovations That Add the Most Value
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Discover which home improvements offer the best return on
+                investment when it's time to sell your property.
+              </p>
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline flex items-center"
+              >
+                Read More <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/ef6f8defea9d489f8fd216acc8b9de0b.jpg"
+              alt="Market Trends"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-3">
+                <span class="flex items-center mr-4"
+                  ><i class="ri-calendar-line mr-1"></i> April 5, 2025</span
+                >
+                <span class="flex items-center"
+                  ><i class="ri-user-line mr-1"></i> By Marcus Chen</span
+                >
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                2025 Real Estate Market Forecast: What to Expect
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Our experts analyze current trends and provide insights on what
+                to expect in the real estate market this year.
+              </p>
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline flex items-center"
+              >
+                Read More <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+          >
+            <img
+              src="https://public.readdy.ai/ai/img_res/309d25737fa87552732b7c376d4f3035.jpg"
+              alt="First-time Buyers"
+              class="w-full h-48 object-cover object-top"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-gray-500 text-sm mb-3">
+                <span class="flex items-center mr-4"
+                  ><i class="ri-calendar-line mr-1"></i> April 2, 2025</span
+                >
+                <span class="flex items-center"
+                  ><i class="ri-user-line mr-1"></i> By Olivia Rodriguez</span
+                >
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                The Complete Guide for First-Time Home Buyers
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Everything you need to know about buying your first home, from
+                financing options to closing the deal.
+              </p>
+              <a
+                href="#"
+                class="text-primary font-medium hover:underline flex items-center"
+              >
+                Read More <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-white mb-6 inline-block"
+              >HavenPoint</a
+            >
+            <p class="text-gray-400 mb-6">
+              Your trusted partner in real estate since 2005. We help you find
+              the perfect property that matches your lifestyle and investment
+              goals.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-twitter-x-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-primary transition"
+              >
+                <i class="ri-linkedin-fill"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Properties</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Featured Listings</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >New Listings</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Open Houses</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Price Reductions</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Properties for Sale</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Properties for Rent</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Resources</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Mortgage Calculator</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Property Guides</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Market Reports</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Newsletter Archive</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Buying Guide</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Selling Guide</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-6">Company</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Press Room</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8">
+          <marquee behavior="scroll" direction="left" class="text-gray-400">Designed and developed by DigiTech Solutions | +234(0)8131017099 | Digitalcivitas855@gmail.com</marquee>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-gray-400">
+                &copy; 2025 HavenPoint Realty. All rights reserved.
+              </p>
+            </div>
+            <div class="md:text-right">
+              <ul class="flex flex-wrap space-x-4 md:justify-end">
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Terms of Service</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Disclaimer</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-gray-400 hover:text-white transition"
+                    >Accessibility</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300"
+    >
+      <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+      const mobileMenu = document.querySelector(".mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Mobile Dropdown Toggle
+      const mobileDropdowns = document.querySelectorAll(".mobile-dropdown button");
+
+      mobileDropdowns.forEach((dropdown) => {
+        dropdown.addEventListener("click", () => {
+          const content = dropdown.nextElementSibling;
+          content.classList.toggle("active");
+
+          // Update the icon
+          const icon = dropdown.querySelector("i");
+          if (content.classList.contains("active")) {
+            icon.classList.remove("ri-arrow-down-s-line");
+            icon.classList.add("ri-arrow-up-s-line");
+          } else {
+            icon.classList.remove("ri-arrow-up-s-line");
+            icon.classList.add("ri-arrow-down-s-line");
+          }
+        });
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>
